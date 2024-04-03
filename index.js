@@ -11,12 +11,23 @@ app.use(morgan('dev'));
 
 // body parser
 app.use(express.json());
-
+app.use(bodyparser.urlencoded({extended: false}))
 
 // Basic Configuration
 const port = process.env.PORT || 3000;
 
 app.use(cors());
+
+// create random
+// app.use((req, res, next) =>  {
+//   const nb = Math.round(Math.random() * 100);
+//   const { original_url } = req.query;
+ 
+
+//   req.original_url = original_url;
+//   req.nb = nb;
+//   next();
+// })
 
 app.use('/public', express.static(`${process.cwd()}/public`));
 
